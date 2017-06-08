@@ -1,0 +1,14 @@
+package hxqh.eam.abb.dao;
+
+import cn.edu.ncut.common.basedao.Dao;
+import cn.edu.ncut.model.YYYYY;
+
+
+/**
+ *
+ * @author lh
+ *
+ */
+public interface XXXXX extends Dao<YYYYY> {
+}
+
