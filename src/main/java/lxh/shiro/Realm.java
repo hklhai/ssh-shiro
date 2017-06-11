@@ -1,9 +1,6 @@
 package lxh.shiro;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -14,7 +11,7 @@ import java.util.Map;
 /**
  * Created by lh on 2017/4/20.
  */
-public class Realm extends AuthorizingRealm {
+public class Realm extends AuthorizingRealm  {
 
     private static Map<String,String> userInfo = new HashMap<>();
     static {
@@ -25,17 +22,14 @@ public class Realm extends AuthorizingRealm {
 
     @Override
     public void setName(String name) {
-        super.setName("testRealm");
+        super.setName("realm"); //类名小写
 
     }
 
-    //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
         return null;
     }
-
 
     //认证
     @Override
@@ -54,5 +48,10 @@ public class Realm extends AuthorizingRealm {
         SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(usercode,pwd,this.getName());
 
         return simpleAuthenticationInfo;
+    }
+
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return token instanceof UsernamePasswordToken;
     }
 }

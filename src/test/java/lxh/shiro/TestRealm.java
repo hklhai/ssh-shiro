@@ -7,6 +7,7 @@ import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -23,12 +24,11 @@ public class TestRealm {
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken("zs", "123");
         try {
             subject.login(usernamePasswordToken);
-
         } catch (AuthenticationException e) {
             e.printStackTrace();
         }
-
-        boolean isPass = subject.isAuthenticated();
-        System.out.println(isPass);
+        Assert.assertEquals(true, subject.isAuthenticated()); //断言用户已经登录
+        //退出
+        subject.logout();
     }
 }

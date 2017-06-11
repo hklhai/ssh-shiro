@@ -19,7 +19,6 @@ public class TestMD5 {
         //System.out.println("不加盐");
         Assert.assertEquals(s, "c39e1a03859f9ee215bc49131d0caf33");
 
-
         String s_salt_hashCounter = new Md5Hash(passwd, salt, hashCounter).toString();
         //System.out.println("加盐加Hash");
         Assert.assertEquals(s_salt_hashCounter, "febed28f3be9cab9e7b85bbd8e7a9b8e");
